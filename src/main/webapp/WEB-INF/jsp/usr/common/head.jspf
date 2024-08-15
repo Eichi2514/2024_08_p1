@@ -18,24 +18,18 @@
 <!-- 테일윈드 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.4/tailwind.min.css">
 <!-- 테일윈드 치트시트 : https://nerdcave.com/tailwind-cheat-sheet -->
+<style>
+@import
+	url("https://fastly.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css");
+</style>
 </head>
 <body>
 	<header>
-		<div class="flex h-20 mx-auto items-center text-3xl">
-			<a href="/">LOGO</a>
-			<div class="flex-grow"></div>
-			<ul class="flex">
-				<li><a class="hover:underline" href="../article/list">LIST</a></li>
-				<li><a class="hover:underline" href="../article/write">WRITE</a></li>
-				
-				<c:if test="${!rq.isLogined() }">
-				<li><a class="hover:underline" href="../member/join">JOIN</a></li>
-				<li><a class="hover:underline" href="../member/login">LOGIN</a></li>
-				</c:if>
-				
-				<c:if test="${rq.isLogined() }"><li><a class="hover:underline" href="../member/doLogout">LOGOUT</a></li></c:if>
-			</ul>
+		<div class="top_bar relative">
+			<img src="https://github.com/user-attachments/assets/7e2c2597-0a4f-442f-807e-1978c699dd08" alt="" />
+			<div class="logo absolute">
+				<a href="/"><img src="https://github.com/user-attachments/assets/a4d64d55-efe1-4ba9-b879-c0a44950048e" alt="" /></a>
+			</div>
 		</div>
 	</header>
-
-<h1>${pageTitle }</h1>
+	<div class="bg w-screen h-screen relative">

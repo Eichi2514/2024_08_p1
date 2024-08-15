@@ -1,51 +1,83 @@
 @charset "UTF-8";
 
-@font-face {
-	font-family: 'LotteMartDream';
-	font-style: normal;
-	font-weight: 400;
-	src:
-		url('//fastly.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2')
-		format('woff2'),
-		url('//fastly.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff')
-		format('woff');
+html>body, button, input {
+	font-family: Galmuri11;
+	font-weight: 800;
 }
 
-@font-face {
-	font-family: 'LotteMartDream';
-	font-style: normal;
-	font-weight: 700;
-	src:
-		url('//fastly.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2')
-		format('woff2'),
-		url('//fastly.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff')
-		format('woff');
+img {
+	mix-blend-mode: multiply;
 }
 
-@font-face {
-	font-family: 'LotteMartDream';
-	font-style: normal;
-	font-weight: 300;
-	src:
-		url('//fastly.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2')
-		format('woff2'),
-		url('//fastly.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff')
-		format('woff');
+header {
+	background: rgb(213, 255, 255);
 }
 
-.lottemartdream * {
-	font-family: 'LotteMartDream', sans-serif;
+.top_bar {
+	margin: auto;
+	width: 1200px;
+	height: 200px;
+	z-index: 10;
 }
 
-html{
-	background: black;
-	color : white;
+.logo {
+	top: 10px;
+	left: 120px;
 }
 
-html>body {
-	font-family: 'LotteMartDream', sans-serif;
+.bg {
+	background: rgb(181, 214, 146);
 }
 
-header>div>ul>li {
-	margin-right: 30px;
+.main {
+	margin: auto;
+	width: 1200px;
+	height: 1200px;
+	z-index: 10;
+}
+
+.id, .pw {
+	width: 285px;
+	height: 40px;
+	z-index: 20;
+}
+
+.csp {
+	margin-left: 5px;
+	text-indent: 5px;
+}
+
+.id {
+	top: 348px;
+	left: 130px;
+}
+
+.pw {
+	top: 398px;
+	left: 130px;
+}
+
+.text_color{
+	background: rgb(231, 206, 131);
+	border: 1px solid;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.join_bt {
+	width: 130px;
+	height: 40px;
+	top: 448px;
+	left: 130px;
+	
+}
+
+.login_bt {
+	width: 130px;
+	height: 40px;
+	top: 448px;
+	left: 285px;
+	
 }
