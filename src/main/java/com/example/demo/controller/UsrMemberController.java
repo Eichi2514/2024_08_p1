@@ -9,7 +9,9 @@ import com.example.demo.service.MemberService;
 import com.example.demo.util.Ut;
 import com.example.demo.vo.Member;
 import com.example.demo.vo.ResultData;
+import com.example.demo.vo.Rq;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -20,19 +22,11 @@ public class UsrMemberController {
 
 	@RequestMapping("/usr/member/doLogout")
 	@ResponseBody
-	public String doLogout(HttpSession httpSession) {
-
-		boolean isLogined = false;
-
-		if (httpSession.getAttribute("loginedMemberId") != null) {
-			isLogined = true;
-		}
-
-		if (!isLogined) {
-			return Ut.jsHistoryBack("F-A", "이미 로그아웃 함");
-		}
-
-		httpSession.removeAttribute("loginedMemberId");
+	public String doLogout(HttpServletRequest req) {
+		
+		Rq rq = (Rq) req.getAttribute("rq");
+		
+		rq.logout();
 
 		return Ut.jsReplace("S-1", Ut.f("로그아웃 되었습니다"), "/");
 	}
@@ -51,18 +45,11 @@ public class UsrMemberController {
 
 	@RequestMapping("/usr/member/doLogin")
 	@ResponseBody
-	public String doLogin(HttpSession httpSession, String loginId, String loginPw) {
+	public String doLogin(HttpServletRequest req, String loginId, String loginPw) {
 
-		boolean isLogined = false;
+		Rq rq = (Rq) req.getAttribute("rq");
 
-		if (httpSession.getAttribute("loginedMemberId") != null) {
-			isLogined = true;
-		}
-
-		if (isLogined) {
-			return Ut.jsHistoryBack("F-A", "이미 로그인 함");
-		}
-
+		
 		if (Ut.isEmptyOrNull(loginId)) {
 			return Ut.jsHistoryBack("F-1", "loginId 입력 x");
 		}
@@ -80,7 +67,7 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호 틀림"));
 		}
 
-		httpSession.setAttribute("loginedMemberId", member.getId());
+		rq.login(member);
 
 		return Ut.jsReplace("S-1", Ut.f("%s님 환영합니다", member.getNickname()), "/");
 	}
@@ -90,39 +77,22 @@ public class UsrMemberController {
 	public String doJoin(HttpSession httpSession, String loginId, String loginPw, String name,
 			String nickname, String cellphoneNum, String email) {
 
-		boolean isLogined = false;
-
-		if (httpSession.getAttribute("loginedMemberId") != null) {
-			isLogined = true;
-		}
-
-		if (isLogined) {
-//			return ResultData.from("F-A", "이미 로그인 함");
-			return Ut.jsHistoryBack("F-A", "이미 로그인 함");
-		}
-
 		if (Ut.isEmptyOrNull(loginId)) {
-//			return ResultData.from("F-1", "loginId 입력 x");
 			return Ut.jsReplace("F-1", "loginId 입력 x", "join");
 		}
 		if (Ut.isEmptyOrNull(loginPw)) {
-//			return ResultData.from("F-2", "loginPw 입력 x");
 			return Ut.jsReplace("F-2", "loginPw 입력 x", "join");
 		}
 		if (Ut.isEmptyOrNull(name)) {
-//			return ResultData.from("F-3", "name 입력 x");
 			return Ut.jsReplace("F-3", "name 입력 x", "join");
 		}
 		if (Ut.isEmptyOrNull(nickname)) {
-//			return ResultData.from("F-4", "nickname 입력 x");
 			return Ut.jsReplace("F-4", "nickname 입력 x", "join");
 		}
 		if (Ut.isEmptyOrNull(cellphoneNum)) {
-//			return ResultData.from("F-5", "cellphoneNum 입력 x");
 			return Ut.jsReplace("F-5", "cellphoneNum 입력 x", "join");
 		}
 		if (Ut.isEmptyOrNull(email)) {
-//			return ResultData.from("F-6", "email 입력 x");
 			return Ut.jsReplace("F-6", "email 입력 x", "join");
 		}
 		
@@ -134,7 +104,6 @@ public class UsrMemberController {
 
 		Member member = memberService.getMemberById((int) doJoinRd.getData1());
 
-//		return ResultData.newData(doJoinRd, "새로 생성된 member", member);
 		return Ut.jsHistoryBack("S-1", Ut.f("%s님 환영합니다", nickname));
 	}
 

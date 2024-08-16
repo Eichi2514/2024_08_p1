@@ -1,14 +1,17 @@
-DROP DATABASE IF EXISTS `24_08_Spring`;
-CREATE DATABASE `24_08_Spring`;
-USE `24_08_Spring`;
+DROP DATABASE IF EXISTS `24_08_p1`;
+CREATE DATABASE `24_08_p1`;
+USE `24_08_p1`;
 
-CREATE TABLE article(
+CREATE TABLE `character`(
       id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
       regDate DATETIME NOT NULL,
-      updateDate DATETIME NOT NULL,
       memberId INT(10),
-      title CHAR(100) NOT NULL,
-      `body` TEXT NOT NULL
+      `level` INT(10) NOT NULL DEFAULT 1,
+      money INT(10) NOT NULL DEFAULT 0,
+      hp INT(10) NOT NULL DEFAULT 1,
+      `exp` INT(10) NOT NULL DEFAULT 0,
+      `Name` CHAR(100) NOT NULL,
+      `type` TEXT NOT NULL
 );
 
 CREATE TABLE `member`(
@@ -26,35 +29,12 @@ CREATE TABLE `member`(
       delDate DATETIME COMMENT '탈퇴 날짜'
 );
 
-## 게시글 테스트 데이터 생성
-INSERT INTO article
-SET regDate = NOW(),
-updateDate = NOW(),
-memberId = 1,
-title = '제목1',
-`body` = '내용1';
-
-INSERT INTO article
-SET regDate = NOW(),
-updateDate = NOW(),
-memberId = 1,
-title = '제목2',
-`body` = '내용2';
-
-INSERT INTO article
-SET regDate = NOW(),
-updateDate = NOW(),
-memberId = 1,
-title = '제목3',
-`body` = '내용3';
-
-
-## 게시글 테스트 데이터 생성
+## 테스트 회원 생성
 INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
-loginId = 'admin',
-loginPw = 'admin',
+loginId = 'asd',
+loginPw = 'asd',
 `authLevel` = 7,
 `name` = '관리자',
 nickname = '관리자',
@@ -64,8 +44,8 @@ email = 'abc@gmail.com';
 INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
-loginId = 'test1',
-loginPw = 'test1',
+loginId = 'qwe',
+loginPw = 'qwe',
 `name` = '회원1_이름',
 nickname = '회원1_닉네임',
 cellphoneNum = '01043214321',
@@ -74,27 +54,15 @@ email = 'abcd@gmail.com';
 INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
-loginId = 'test2',
-loginPw = 'test2',
+loginId = 'zxc',
+loginPw = 'zxc',
 `name` = '회원2_이름',
 nickname = '회원2_닉네임',
 cellphoneNum = '01056785678',
 email = 'abcde@gmail.com';
 
 SELECT *
-FROM article
-ORDER BY id DESC;
+FROM `character`;
 
 SELECT *
 FROM `member`;
-
-
-###############################################################################
-
-
--- ## 게시글 테스트 데이터 대량 생성
--- INSERT INTO article
--- SET regDate = NOW(),
--- updateDate = NOW(),
--- title = CONCAT('제목__', RAND()),
--- `body` = CONCAT('내용__', RAND());

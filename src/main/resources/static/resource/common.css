@@ -4,6 +4,9 @@ html>body, button, input {
 	font-family: Galmuri11;
 	font-weight: 800;
 }
+body{
+	background: rgb(181, 214, 146);
+}
 
 img {
 	mix-blend-mode: multiply;
@@ -23,10 +26,6 @@ header {
 .logo {
 	top: 10px;
 	left: 120px;
-}
-
-.bg {
-	background: rgb(181, 214, 146);
 }
 
 .main {
@@ -57,7 +56,7 @@ header {
 	left: 130px;
 }
 
-.text_color{
+.text_color {
 	background: rgb(231, 206, 131);
 	border: 1px solid;
 	border-radius: 5px;
@@ -70,14 +69,46 @@ header {
 	width: 130px;
 	height: 40px;
 	top: 448px;
-	left: 130px;
-	
+	left: 285px;
+	font-size: 20px;
 }
 
-.login_bt {
+.login_out_bt {
 	width: 130px;
 	height: 40px;
 	top: 448px;
-	left: 285px;
-	
+	left: 130px;
+	font-size: 20px;
+}
+
+.member_name {
+	width: 130px;
+	height: 90px;
+	top: 348px;
+	left: 130px;
+}
+
+.start, .start-1, .start-2, start-text {
+	width: 135px;
+	height: 135px;
+	top: 350px;
+	left: 280px;
+}
+
+.start-2, .start-text {
+	display: none;
+}
+
+.start-text {
+	left: 10px;
+	top: 60px;
+	font-size: 30px;
+}
+
+.start:hover>.start-2, .start:hover>.start-text {
+	display: block;
+}
+
+.start:hover>.start-1 {
+	display: none;
 }
