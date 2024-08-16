@@ -51,20 +51,20 @@ public class UsrMemberController {
 
 		
 		if (Ut.isEmptyOrNull(loginId)) {
-			return Ut.jsHistoryBack("F-1", "loginId 입력 x");
+			return Ut.jsHistoryBack("F-1", "ID를 입력해주세요");
 		}
 		if (Ut.isEmptyOrNull(loginPw)) {
-			return Ut.jsHistoryBack("F-2", "loginPw 입력 x");
+			return Ut.jsHistoryBack("F-2", "PW를 입력해주세요");
 		}
 
 		Member member = memberService.getMemberByLoginId(loginId);
 
 		if (member == null) {
-			return Ut.jsHistoryBack("F-3", Ut.f("%s는(은) 존재 x", loginId));
+			return Ut.jsHistoryBack("F-3", Ut.f("%s는(은) 존재하지 않습니다", loginId));
 		}
 
 		if (member.getLoginPw().equals(loginPw) == false) {
-			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호 틀림"));
+			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호가 틀렸습니다"));
 		}
 
 		rq.login(member);
@@ -74,26 +74,32 @@ public class UsrMemberController {
 
 	@RequestMapping("/usr/member/doJoin")
 	@ResponseBody
-	public String doJoin(HttpSession httpSession, String loginId, String loginPw, String name,
+	public String doJoin(HttpSession httpSession, String loginId, String loginPw, String loginPw2, String name,
 			String nickname, String cellphoneNum, String email) {
 
 		if (Ut.isEmptyOrNull(loginId)) {
-			return Ut.jsReplace("F-1", "loginId 입력 x", "join");
+			return Ut.jsReplace("F-1", "아이디를 입력해주세요", "join");
 		}
 		if (Ut.isEmptyOrNull(loginPw)) {
-			return Ut.jsReplace("F-2", "loginPw 입력 x", "join");
+			return Ut.jsReplace("F-2", "비밀번호를 입력해주세요", "join");
+		}
+		if (Ut.isEmptyOrNull(loginPw2)) {
+			return Ut.jsReplace("F-3", "재확인 비밀번호를 입력해주세요", "join");
 		}
 		if (Ut.isEmptyOrNull(name)) {
-			return Ut.jsReplace("F-3", "name 입력 x", "join");
+			return Ut.jsReplace("F-4", "이름을 입력해주세요", "join");
 		}
 		if (Ut.isEmptyOrNull(nickname)) {
-			return Ut.jsReplace("F-4", "nickname 입력 x", "join");
+			return Ut.jsReplace("F-5", "닉네임을 입력해주세요", "join");
 		}
 		if (Ut.isEmptyOrNull(cellphoneNum)) {
-			return Ut.jsReplace("F-5", "cellphoneNum 입력 x", "join");
+			return Ut.jsReplace("F-6", "전화번호를 입력해주세요", "join");
 		}
 		if (Ut.isEmptyOrNull(email)) {
-			return Ut.jsReplace("F-6", "email 입력 x", "join");
+			return Ut.jsReplace("F-7", "이메일을 입력해주세요", "join");
+		}
+		if (loginPw != loginPw2) {
+			return Ut.jsReplace("F-8", "비밀번호가 일치하지 않습니다", "join");
 		}
 		
 		ResultData doJoinRd = memberService.doJoin(loginId, loginPw, name, nickname, cellphoneNum, email);
@@ -104,7 +110,7 @@ public class UsrMemberController {
 
 		Member member = memberService.getMemberById((int) doJoinRd.getData1());
 
-		return Ut.jsHistoryBack("S-1", Ut.f("%s님 환영합니다", nickname));
+		return Ut.jsReplace("S-1", Ut.f("%s님 환영합니다", nickname), "/");
 	}
 
 }

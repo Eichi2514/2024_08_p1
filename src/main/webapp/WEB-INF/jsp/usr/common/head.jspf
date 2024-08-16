@@ -26,8 +26,10 @@
 <body>
 	<header>
 		<div class="top_bar relative">
+		    <!-- p1 상단바 -->
 			<img src="https://github.com/user-attachments/assets/7e2c2597-0a4f-442f-807e-1978c699dd08" alt="" />
 			<div class="logo absolute">
+			    <!-- p1 로고 -->
 				<a href="/"><img src="https://github.com/user-attachments/assets/a4d64d55-efe1-4ba9-b879-c0a44950048e" alt="" /></a>
 			</div>
 		</div>
