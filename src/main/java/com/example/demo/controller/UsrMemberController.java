@@ -23,25 +23,23 @@ public class UsrMemberController {
 	@RequestMapping("/usr/member/doLogout")
 	@ResponseBody
 	public String doLogout(HttpServletRequest req) {
-		
+
 		Rq rq = (Rq) req.getAttribute("rq");
-		
+
 		rq.logout();
 
 		return Ut.jsReplace("S-1", Ut.f("로그아웃 되었습니다"), "/");
 	}
-	
+
 	@RequestMapping("/usr/member/login")
 	public String showLogin() {
 		return "/usr/member/login";
 	}
-	
 
 	@RequestMapping("/usr/member/join")
 	public String showJoin() {
 		return "/usr/member/join";
 	}
-
 
 	@RequestMapping("/usr/member/doLogin")
 	@ResponseBody
@@ -49,7 +47,6 @@ public class UsrMemberController {
 
 		Rq rq = (Rq) req.getAttribute("rq");
 
-		
 		if (Ut.isEmptyOrNull(loginId)) {
 			return Ut.jsHistoryBack("F-1", "ID를 입력해주세요");
 		}
@@ -84,24 +81,30 @@ public class UsrMemberController {
 			return Ut.jsReplace("F-2", "비밀번호를 입력해주세요", "join");
 		}
 		if (Ut.isEmptyOrNull(loginPw2)) {
-			return Ut.jsReplace("F-3", "재확인 비밀번호를 입력해주세요", "join");
+			return Ut.jsReplace("F-2", "재확인 비밀번호를 입력해주세요", "join");
+		}
+		if (!loginPw.contains(loginPw2)) {
+			return Ut.jsReplace("F-2", "비밀번호가 일치하지 않습니다", "join");
 		}
 		if (Ut.isEmptyOrNull(name)) {
-			return Ut.jsReplace("F-4", "이름을 입력해주세요", "join");
+			return Ut.jsReplace("F-3", "이름을 입력해주세요", "join");
 		}
 		if (Ut.isEmptyOrNull(nickname)) {
-			return Ut.jsReplace("F-5", "닉네임을 입력해주세요", "join");
+			return Ut.jsReplace("F-4", "닉네임을 입력해주세요", "join");
 		}
 		if (Ut.isEmptyOrNull(cellphoneNum)) {
-			return Ut.jsReplace("F-6", "전화번호를 입력해주세요", "join");
+			return Ut.jsReplace("F-5", "전화번호를 입력해주세요", "join");
+		}
+		if (cellphoneNum.length() != 11 || !cellphoneNum.startsWith("010")) {
+			return Ut.jsReplace("F-5", "잘못된 전화번호입니다", "join");
 		}
 		if (Ut.isEmptyOrNull(email)) {
-			return Ut.jsReplace("F-7", "이메일을 입력해주세요", "join");
+			return Ut.jsReplace("F-6", "이메일을 입력해주세요", "join");
 		}
-		if (loginPw != loginPw2) {
-			return Ut.jsReplace("F-8", "비밀번호가 일치하지 않습니다", "join");
+		if (!email.contains(".")) {
+			return Ut.jsReplace("F-6", "잘못된 이메일입니다", "join");
 		}
-		
+
 		ResultData doJoinRd = memberService.doJoin(loginId, loginPw, name, nickname, cellphoneNum, email);
 
 		if (doJoinRd.isFail()) {

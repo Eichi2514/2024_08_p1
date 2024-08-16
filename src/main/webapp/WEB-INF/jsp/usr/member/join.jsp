@@ -42,7 +42,7 @@
 			</div>
 			<div class="text_color doJoin_email absolute doJoin_ph">
 				<div class="label">이 메 일</div>
-				<input type="text" placeholder="이메일 입력" name="email" />
+				<input type="email" placeholder="이메일 입력" name="email" />
 			</div>
 
 			<button class="text_color doJoin_bt absolute" type="submit">회원가입</button>
