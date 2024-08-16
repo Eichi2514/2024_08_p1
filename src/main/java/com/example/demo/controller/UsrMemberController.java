@@ -110,9 +110,7 @@ public class UsrMemberController {
 		if (doJoinRd.isFail()) {
 			return Ut.jsReplace(doJoinRd.getResultCode(), doJoinRd.getMsg(), "join");
 		}
-
-		Member member = memberService.getMemberById((int) doJoinRd.getData1());
-
+		
 		return Ut.jsReplace("S-1", Ut.f("%s님 환영합니다", nickname), "/");
 	}
 

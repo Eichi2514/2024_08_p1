@@ -4,7 +4,7 @@
 <c:set var="pageTitle" value="회원가입"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<div class="main relative">
+<div class="bg relative">
 	<img src="https://github.com/user-attachments/assets/b5f5d356-760d-44f0-be02-bb57a6277329" alt="" />
 
 	<div class="doJoin_bg text_color absolute">

@@ -4,7 +4,7 @@
 <c:set var="pageTitle" value="메인"></c:set>
 <%@ include file="../common/head.jspf"%>
 
-<div class="main relative">
+<div class="bg relative">
     <!-- p1 홈페이지 배경 -->
 	<img src="https://github.com/user-attachments/assets/007e8af7-3561-4c0d-8585-6c941cbde9ad" alt="" />
 	<form method="POST" action="../member/doLogin">
