@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.example.demo.repository.CharacRepository;
 import com.example.demo.util.Ut;
 import com.example.demo.vo.Charac;
-import com.example.demo.vo.Member;
 import com.example.demo.vo.ResultData;
 
 @Service
@@ -40,6 +39,21 @@ public class CharacService {
 
 	public List<Charac> getcharacs(int memberId) {
 		return characRepository.getcharacs(memberId);
+	}
+
+	public Charac getcharacById(int id) {
+		return characRepository.getcharacById(id);
+	}
+
+	public ResultData userCanDelete(int loginedMemberId, Charac charac) {
+		if (charac.getMemberId() != loginedMemberId) {
+			return ResultData.from("F-2", Ut.f("%s 캐릭터에 대한 삭제 권한이 없습니다", charac.getName()));
+		}
+		return ResultData.from("S-1", Ut.f("%s 캐릭터를 삭제했습니다", charac.getName()));
+	}
+
+	public void doDelete(int id) {
+		characRepository.doDelete(id);
 	}
 
 

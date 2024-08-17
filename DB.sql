@@ -12,7 +12,7 @@ CREATE TABLE `charac`(
       
       `level` INT(10) NOT NULL DEFAULT 1,
       money INT(10) NOT NULL DEFAULT 0,
-      hp INT(10) NOT NULL DEFAULT 1,
+      hp INT(10) NOT NULL DEFAULT 550,
       `exp` INT(10) NOT NULL DEFAULT 0,
       location TEXT NOT NULL DEFAULT "village" COMMENT '캐릭터 위치'
 );
@@ -76,9 +76,14 @@ FROM `charac`
 WHERE `memberId` = 1;
 
 SELECT *
+FROM `charac`;
+
+SELECT *
 FROM `member`;
 
-
+INSERT INTO `charac` SET regDate = NOW(), updateDate = NOW(), memberId = 1, `name` = "qwe",  `type` = "https://github.com/user-attachments/assets/d445c3ce-bb6a-4728-a1a1-45ac148b0058";
+INSERT INTO `charac` SET regDate = NOW(), updateDate = NOW(), memberId = 1, `name` = "asd",  `type` = "https://github.com/user-attachments/assets/2f795830-7be7-469c-919d-eca8397df66c";
+INSERT INTO `charac` SET regDate = NOW(), updateDate = NOW(), memberId = 1, `name` = "zxc",  `type` = "https://github.com/user-attachments/assets/70c3151e-406a-4b57-a315-bedc694e0642";
 
 INSERT INTO img SET `key` = 1, `level` = 1, `name` = "불타입 1단계", url = "https://github.com/user-attachments/assets/fdf48c2f-3cbe-43fc-98a7-30221b7e76ba";
 INSERT INTO img SET `key` = 1, `level` = 2, `name` = "불타입 2단계", url = "https://github.com/user-attachments/assets/fda0a7c0-8e36-4c1b-83b0-6f46568cf8a5"; 

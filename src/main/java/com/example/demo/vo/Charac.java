@@ -12,11 +12,11 @@ public class Charac {
 	private int id;
 	private String regDate;
 	private String updateDate;
-	private String memberId;
+	private int memberId;
 	private String name;
 	private String type;
 	private int level;
-	private int mony;
+	private int money;
 	private int hp;
 	private int exp;
 	private String location;	

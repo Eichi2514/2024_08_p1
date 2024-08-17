@@ -13,6 +13,7 @@ img {
 	mix-blend-mode: multiply;
 }
 
+/* 상단바 */
 header {
 	background: rgb(213, 255, 255);
 }
@@ -41,8 +42,47 @@ header {
 .bg {
 	margin: auto;
 	width: 1200px;
-	height: 1200px;
+	height: auto;
 	z-index: 10;
+}
+
+/* 인게임 상단바 */
+
+.ingame_logo{
+	top: 10px;
+	left: 50px;
+}
+
+.ig{
+	height: 40px;
+	font-size: 1.5rem;
+	z-index: 10;
+	
+}
+
+.level{
+	top: 20px;
+	left: 350px;
+}
+
+.money{
+	top: 20px;
+	left: 700px;
+}
+
+.name{
+	top: 60px;
+	left: 350px;
+}
+
+.hp{
+	top: 100px;
+	left: 350px;
+}
+
+.exp{
+	top: 140px;
+	left: 350px;
 }
 
 /* 메인 CSS */
@@ -211,7 +251,7 @@ header {
 	left: 660px;
 }
 
-/* 캐릭터 선택 CSS */
+/* 캐릭터 선택, 생성 CSS */
 .signs {
 	top: 100px;
 	left: 100px;
@@ -322,6 +362,7 @@ header {
 .make_img {
 	width: 180px;
 	height: 180px;
+	padding: 10px;
 }
 
 .charac_choice, .charac_delete {
@@ -338,4 +379,10 @@ header {
 .charac_delete {
 	top: 300px;
 	left: 145px;
+}
+.make_characName{
+	width: 180px;
+	height: 30px;
+	border-top: 5px solid;
+	font-size : 2rem;
 }

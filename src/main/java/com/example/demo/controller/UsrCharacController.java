@@ -51,6 +51,18 @@ public class UsrCharacController {
 		return "/usr/charac/make";
 	}
 	
+	@RequestMapping("/usr/charac/village")
+	public String showVillage(Model model, int characId) {
+		
+		Charac charac = characService.getcharacById(characId);
+
+		if (charac == null) {
+			return Ut.jsHistoryBack("F-1", Ut.f("해당 캐릭터는 없습니다"));
+		}
+		model.addAttribute("charac", charac);
+		return "/usr/charac/village";
+	}
+	
 	@RequestMapping("/usr/charac/doMake")
 	@ResponseBody
 	public String doMake(int memberId, String name, int num) {
@@ -78,6 +90,31 @@ public class UsrCharacController {
 		}
 
 		return Ut.jsReplace("S-1", Ut.f("%s가 생성되었습니다", name), "/usr/charac/choice");
+	}
+	
+	@RequestMapping("/usr/charac/doDelete")
+	@ResponseBody
+	public String doDelete(HttpServletRequest req, int id) {
+
+		Rq rq = (Rq) req.getAttribute("rq");
+
+		Charac charac = characService.getcharacById(id);
+
+		if (charac == null) {
+			return Ut.jsHistoryBack("F-1", Ut.f("%d번 캐릭터는 없습니다", id));
+		}
+
+		ResultData userCanDeleteRd = characService.userCanDelete(rq.getLoginedMemberId(), charac);
+
+		if (userCanDeleteRd.isFail()) {
+			return Ut.jsHistoryBack(userCanDeleteRd.getResultCode(), userCanDeleteRd.getMsg());
+		}
+
+		if (userCanDeleteRd.isSuccess()) {
+			characService.doDelete(id);
+		}
+
+		return Ut.jsReplace(userCanDeleteRd.getResultCode(), userCanDeleteRd.getMsg(), "../charac/choice");
 	}
 
 }

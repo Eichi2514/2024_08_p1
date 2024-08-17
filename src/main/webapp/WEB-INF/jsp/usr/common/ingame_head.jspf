@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>${pageTitle }</title>
+<link rel="stylesheet" href="/resource/common.css" />
+<script src="/resource/common.js" defer="defer"></script>
+<!-- 제이쿼리 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- 폰트어썸 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- 폰트어썸 FREE 아이콘 리스트 : https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free -->
+
+<!-- 테일윈드 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.4/tailwind.min.css">
+<!-- 테일윈드 치트시트 : https://nerdcave.com/tailwind-cheat-sheet -->
+<style>
+@import
+	url("https://fastly.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css");
+</style>
+</head>
+<body>
+	<header>
+		<div class="top_bar relative">
+		    <!-- p1 상단바 -->
+			<img src="https://github.com/user-attachments/assets/7e2c2597-0a4f-442f-807e-1978c699dd08" alt="" />
+			<div class="ingame_logo absolute">
+			    <!-- p1 로고 -->
+				<a href="/"><img src="https://github.com/user-attachments/assets/a4d64d55-efe1-4ba9-b879-c0a44950048e" alt="" /></a>
+			</div>
+		</div>
+	</header>
+
