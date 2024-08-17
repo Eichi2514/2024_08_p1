@@ -8,13 +8,13 @@ CREATE TABLE `charac`(
       updateDate DATETIME NOT NULL,
       memberId INT(10),
       `name` CHAR(100) NOT NULL,
-      `type` INT(10) NOT NULL  COMMENT '캐릭터 속성',
+      `type` TEXT NOT NULL  COMMENT '캐릭터 속성',
       
       `level` INT(10) NOT NULL DEFAULT 1,
       money INT(10) NOT NULL DEFAULT 0,
       hp INT(10) NOT NULL DEFAULT 1,
       `exp` INT(10) NOT NULL DEFAULT 0,
-      location TEXT NOT NULL DEFAULT "마을" COMMENT '캐릭터 위치'
+      location TEXT NOT NULL DEFAULT "village" COMMENT '캐릭터 위치'
 );
 
 CREATE TABLE `member`(
@@ -72,14 +72,12 @@ cellphoneNum = '01056785678',
 email = 'abcde@gmail.com';
 
 SELECT *
-FROM `charac`;
+FROM `charac`
+WHERE `memberId` = 1;
 
 SELECT *
 FROM `member`;
 
-
-SELECT *
-FROM img;
 
 
 INSERT INTO img SET `key` = 1, `level` = 1, `name` = "불타입 1단계", url = "https://github.com/user-attachments/assets/fdf48c2f-3cbe-43fc-98a7-30221b7e76ba";

@@ -30,7 +30,7 @@
 				${loginedMemberNickname }님 <br /> 환영합니다
 			</div>
 			<div class="start absolute cursor-pointer">
-				<a class="start-text absolute" href="../game/choice">게임시작</a> 
+				<a class="start-text absolute" href="../charac/choice">게임시작</a> 
 				<!-- p1 게임시작 호버 전 -->
 				<img class="start-1" src="https://github.com/user-attachments/assets/f3f4bbe0-bdb9-4960-b9cd-968471a760fb" alt="" />
 				<!-- p1 게임시작 호버 후 -->
