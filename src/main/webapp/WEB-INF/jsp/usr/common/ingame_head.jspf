@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>${pageTitle }</title>
 <link rel="stylesheet" href="/resource/common.css" />
-<script src="/resource/common.js" defer="defer"></script>
 <!-- 제이쿼리 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -32,6 +31,5 @@
 			    <!-- p1 로고 -->
 				<a href="/"><img src="https://github.com/user-attachments/assets/a4d64d55-efe1-4ba9-b879-c0a44950048e" alt="" /></a>
 			</div>
-		</div>
-	</header>
+		
 

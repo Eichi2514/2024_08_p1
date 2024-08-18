@@ -46,44 +46,6 @@ header {
 	z-index: 10;
 }
 
-/* 인게임 상단바 */
-
-.ingame_logo{
-	top: 10px;
-	left: 50px;
-}
-
-.ig{
-	height: 40px;
-	font-size: 1.5rem;
-	z-index: 10;
-	
-}
-
-.level{
-	top: 20px;
-	left: 350px;
-}
-
-.money{
-	top: 20px;
-	left: 700px;
-}
-
-.name{
-	top: 60px;
-	left: 350px;
-}
-
-.hp{
-	top: 100px;
-	left: 350px;
-}
-
-.exp{
-	top: 140px;
-	left: 350px;
-}
 
 /* 메인 CSS */
 .id, .pw {
@@ -385,4 +347,164 @@ header {
 	height: 30px;
 	border-top: 5px solid;
 	font-size : 2rem;
+}
+
+
+/* 인게임 상단바 */
+
+.ingame_logo{
+	top: 10px;
+	left: 50px;
+}
+
+.ig{
+	height: 40px;
+	font-size: 1.5rem;
+	z-index: 10;
+	
+}
+
+.level{
+	top: 30px;
+	left: 300px;
+}
+
+.money{
+	top: 30px;
+	left: 650px;
+}
+
+.name{
+	top: 70px;
+	left: 300px;
+}
+
+.hp{
+	top: 110px;
+	left: 300px;
+}
+
+.exp{
+	top: 150px;
+	left: 300px;
+}
+
+.hp_bar {
+    height: 40px;
+	top: 110px;
+	left: 400px;
+}
+.exp_bar {
+	height: 40px;
+	top: 150px;
+	left: 400px;
+}
+
+/* 마을 css */
+
+.village_charac_img {
+	animation: move 1s linear infinite both;
+}
+/* 자동정렬시 키프레임 깨짐 주의 */
+@keyframes move {
+    0% { transform: translate(0); }
+    20% { transform: translate(-5px, 5px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(5px, 5px); }
+    80% { transform: translate(5px, -5px); }
+    100% { transform: translate(0); }
+}
+
+/* 복사본
+    @keyframes move {
+    0% { transform: translate(0); }
+    20% { transform: translate(-5px, 5px); }
+    40% { transform: translate(-5px, -5px); }
+    60% { transform: translate(5px, 5px); }
+    80% { transform: translate(5px, -5px); }
+    100% { transform: translate(0); }
+} */
+
+.shop_bg{
+	top: 100px;
+	left: 100px;
+	margin: auto;
+	width: 800px;
+	height: 800px;
+	border-radius: 50px;	
+}
+.shop_title{
+	top: 70px;
+	height: 160px;
+	border-top: 10px solid;
+	border-bottom: 10px solid;
+	border-left: 0;
+	border-right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 7rem;
+	font-weight: 300;
+	padding: 30px;
+}
+
+[class*='item']{
+	width: 250px;
+	height: 250px;
+}
+
+.item-1{
+	top: 300px;
+	left: 50px;
+}
+
+.item-2{
+	top: 300px;
+	left: 300px;
+}
+
+.item-3{
+	top: 300px;
+	left: 550px;
+}
+
+.item-4{
+	top: 550px;
+	left: 50px;
+}
+
+.item-5{
+	top: 550px;
+	left: 300px;
+}
+
+.item-6{
+	top: 550px;
+	left: 550px;
+}
+
+.item_text{
+	top: 90px;
+	left: 90px;
+	width: 180px;
+	display: none;
+	flex-direction: column;
+	z-index: 20;
+}
+.item_title{
+	width: 160px;
+	height: 50px;
+	text-align: center;
+	font-size: 21px;
+    border-bottom: 2px solid;
+    padding: 10px;
+}
+.item_body{
+	width: 180px;
+	height: 300px;
+	padding: 10px;
+}
+
+[class*='item']:hover > .item_text{
+	display: flex;	
 }

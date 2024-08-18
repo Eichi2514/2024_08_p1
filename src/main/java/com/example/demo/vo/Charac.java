@@ -15,6 +15,9 @@ public class Charac {
 	private int memberId;
 	private String name;
 	private String type;
+	
+	private int lr;
+	private int ud;
 	private int level;
 	private int money;
 	private int hp;
