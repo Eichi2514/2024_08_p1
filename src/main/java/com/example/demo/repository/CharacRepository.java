@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.example.demo.vo.Charac;
 @Mapper
@@ -24,5 +25,8 @@ public interface CharacRepository {
 	
 	@Delete("DELETE FROM `charac` WHERE id = #{id}")
 	public void doDelete(int id);
+
+	@Update("UPDATE `charac` SET lr = #{lr}, ud = #{ud}, hp = #{hp}, `level` = #{level}, `exp` = #{exp}, money = #{money} WHERE id = #{id}")
+	public void characSet(int id, int lr, int ud, int hp, int level, int exp, int money);
 	
 }

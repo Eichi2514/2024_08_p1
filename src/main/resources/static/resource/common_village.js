@@ -41,7 +41,21 @@
 			$(".shop_bg").addClass("hidden");
 		}
 	}
+	
+	$(".item-1").click(function(){
+		setItem(275, -1, 10);
+	});
+	
 
+	$(".item-2").click(function(){
+		setItem(550, -1, 30);
+	});
+	
+
+	$(".item-3").click(function(){
+		setItem(-1, 55, 20);
+	});
+	 	
 	document.addEventListener("keydown", checkKey, false);
 
 	function checkKey(e) {

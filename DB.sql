@@ -85,7 +85,7 @@ FROM `member`;
 
 
 INSERT INTO `charac` SET regDate = NOW(), updateDate = NOW(), memberId = 1, `name` = "qwe",  `type` = "https://github.com/user-attachments/assets/d445c3ce-bb6a-4728-a1a1-45ac148b0058";
-UPDATE `charac` SET hp = 250, money = 99999999 WHERE id = 1;
+UPDATE `charac` SET lr = 350, ud = 350, hp = 250, money = 99999999 WHERE id = 1;
 INSERT INTO `charac` SET regDate = NOW(), updateDate = NOW(), memberId = 1, `name` = "asd",  `type` = "https://github.com/user-attachments/assets/2f795830-7be7-469c-919d-eca8397df66c";
 INSERT INTO `charac` SET regDate = NOW(), updateDate = NOW(), memberId = 1, `name` = "zxc",  `type` = "https://github.com/user-attachments/assets/70c3151e-406a-4b57-a315-bedc694e0642";
 

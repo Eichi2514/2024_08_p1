@@ -22,19 +22,19 @@ public class CharacService {
 	}
 
 	public ResultData doMake(int memberId, String name, String type) {
-		
+
 		Charac existsCharac = getCharacByName(name);
-		
+
 		if (existsCharac != null) {
 			return ResultData.from("F-2", Ut.f("이미 사용중인 이름(%s) 입니다.", name));
-		}		
-		
+		}
+
 		characRepository.doMake(memberId, name, type);
 		return ResultData.from("S-1", "캐릭터 생성 성공");
 	}
 
 	private Charac getCharacByName(String name) {
-		return characRepository.getcharacByname(name);		
+		return characRepository.getcharacByname(name);
 	}
 
 	public List<Charac> getcharacs(int memberId) {
@@ -56,5 +56,8 @@ public class CharacService {
 		characRepository.doDelete(id);
 	}
 
+	public void characSet(int id, int lr, int ud, int hp, int level, int exp, int money) {
+		characRepository.characSet(id, lr, ud, hp, level, exp, money);
+	}
 
 }

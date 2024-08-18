@@ -8,7 +8,7 @@
 
 <div class="ig level absolute">레벨 : ${charac.getLevel()}</div>
 <div class="ig name absolute">캐릭터 명 : ${charac.getName()}</div>
-<div class="ig money absolute">돈 : ${charac.getMoney()}</div>
+<div class="ig money absolute">돈 : ${charac.getMoney()}h</div>
 <div class="ig hp absolute">생명력 :</div>
 <div class="hp_bar absolute z-10 bg-red-500"></div>
 <div class="ig exp absolute">경험치 :</div>
@@ -27,6 +27,7 @@
 			<div class="item_text absolute text_color">
 				<div class="item_title">작은 회복물약</div>
 				<div class="item_body">체력을 50% 회복시켜준다</div>
+				<div class="item_gold">금액 : 10h</div>
 			</div>
 		</div>
 		<div class="absolute item-2 cursor-pointer">
@@ -35,6 +36,7 @@
 			<div class="item_text absolute text_color">
 				<div class="item_title">큰 회복물약</div>
 				<div class="item_body">체력을 전부 회복시켜준다</div>
+				<div class="item_gold">금액 : 30h</div>
 			</div>
 		</div>
 		<div class="absolute item-3 cursor-pointer">
@@ -42,7 +44,8 @@
 			<img src="https://github.com/user-attachments/assets/affd7ca7-173f-48b6-91b6-f00dff44dc8d" alt="" />
 			<div class="item_text absolute text_color">
 				<div class="item_title">경험치 물약</div>
-				<div class="item_body">경험치를 50% 올려준다</div>
+				<div class="item_body">경험치를 10% 올려준다</div>
+				<div class="item_gold">금액 : 20h</div>
 			</div>
 		</div>
 	</div>
@@ -56,8 +59,8 @@
 	<!-- 자동정렬시 깨짐 주의 -->
 <style type="text/css">
 .village_charac {
-	top: ${charac.getLr()}px;
-	left: ${charac.getUd()}px;
+	top: ${charac.getUd()}px;
+	left: ${charac.getLr()}px;
 }
 .hp_bar {
 	width: ${charac.getHp()}px;
@@ -68,18 +71,63 @@
 </style>
 
 <script type="text/javascript">
-    let LR = ${charac.getLr()};
-    let UD = ${charac.getUd()};
-    let HP = ${charac.getHp()};
-    let EXP = ${charac.getExp()};
-	let Speed = 1;
+let ID = ${charac.getId()};
+let LR = ${charac.getLr()};
+let UD = ${charac.getUd()};
+let HP = ${charac.getHp()};
+let LEVEL = ${charac.getLevel()};
+let EXP = ${charac.getExp()};
+let Money = ${charac.getMoney()};
+let Speed = 1;
+
+function setItem(hp, exp, Gold) {
+    if (Gold <= Money && (hp >= 0 && HP < 550)
+    	|| Gold <= Money && exp >= 0) {
+        if (hp >= 0) { HP += hp; }
+        if (HP > 550) { HP = 550; }
+        if (exp >= 0) { EXP += exp; }
+        if (EXP >= 550) { 
+        	EXP = 0;
+        	LEVEL++;
+        	}
+        Money -= Gold;
+
+        fetch('/characSet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: ID,
+                lr: LR,
+                ud: UD,
+                hp: HP,
+                level: LEVEL,
+                exp: EXP,
+                money: Money
+            })
+        }).then(response => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                alert("서버에서 오류가 발생했습니다.");
+            }
+        }).catch(error => {
+            console.error('에러 발생:', error);
+        });
+    } else if(Gold > Money) {
+        alert("금액이 부족합니다");
+    } else {
+    	alert("체력이 가득 찼습니다");
+    }
+}
 </script>
 
 	<!-- 복사본 
 <style type="text/css">
 .village_charac {
-	top: ${charac.getLr()}px;
-	left: ${charac.getUd()}px;
+	top: ${charac.getUd()}px;
+	left: ${charac.getLr()}px;
 }
 .hp_bar {
 	width: ${charac.getHp()}px;
@@ -90,9 +138,48 @@
 </style>
 
 <script type="text/javascript">
-    let LR = ${charac.getLr()};
-    let UD = ${charac.getUd()};
-	let Speed = 1;
+let ID = ${charac.getId()};
+let LR = ${charac.getLr()};
+let UD = ${charac.getUd()};
+let HP = ${charac.getHp()};
+let LEVEL = ${charac.getLevel()};
+let EXP = ${charac.getExp()};
+let Money = ${charac.getMoney()};
+let Speed = 1;
+
+function setItem(hp, exp, Gold) {
+    if (Gold <= Money) {
+        if (hp >= 0) { HP += hp; }
+        if (exp >= 0) { EXP += exp; }
+        Money -= Gold;
+
+        fetch('/characSet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: ID,
+                lr: LR,
+                ud: UD,
+                hp: HP,
+                level: LEVEL,
+                exp: EXP,
+                money: Money
+            })
+        }).then(response => {
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                alert("서버에서 오류가 발생했습니다.");
+            }
+        }).catch(error => {
+            console.error('에러 발생:', error);
+        });
+    } else {
+        alert("금액이 부족합니다");
+    }
+}
 </script>
 -->
 
